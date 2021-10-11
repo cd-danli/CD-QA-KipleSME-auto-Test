@@ -1,0 +1,122 @@
+2021-10-10 15:44:39,631 api_test.py[line:162]INFO - ########start to run API automation#######
+2021-10-10 15:44:39,631 api_test.py[line:163]INFO - *****runAllCase
+2021-10-10 15:44:39,631 api_test.py[line:85]INFO - *****deleteResultByProject
+2021-10-10 15:44:39,667 api_test.py[line:26]INFO - *****loadAllCaseByProject
+2021-10-10 15:44:39,668 api_test.py[line:29]INFO - loadAllCaseByProject sql is:select * from `SME_testcases` where project='SME' and run='yes'
+2021-10-10 15:44:39,669 api_test.py[line:31]INFO - loadAllCaseByProject is:[{'id': 1, 'project': 'SME', 'module': 'Login', 'title': 'app login', 'method': 'post', 'url': '/users/login', 'run': 'yes', 'headers': '{}', 'pre_case_id': -1, 'pre_fields': '[]', 'request_body': '{\r\n    "email":"xmyp1umd@linshiyouxiang.net",\r\n    "password":"Test1234@"\r\n}', 'expect_result': '0', 'assert_type': 'code', 'pass': '', 'msg': '', 'update_time': None, 'response': '', 'qa': 'Doris'}, {'id': 2, 'project': 'SME', 'module': 'UserInfo', 'title': 'user info', 'method': 'post', 'url': '/users/profile/info', 'run': 'yes', 'headers': '{"token":"$token$"}', 'pre_case_id': 1, 'pre_fields': '[{"field":"token","scope":"header"}]', 'request_body': '{}', 'expect_result': '0', 'assert_type': 'code', 'pass': '', 'msg': '', 'update_time': None, 'response': '', 'qa': 'Doris'}]
+2021-10-10 15:44:39,669 api_test.py[line:135]INFO - *****runCaseUpdateDB
+2021-10-10 15:44:39,669 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:39,669 api_test.py[line:191]INFO - #####start to run case id: 1
+2021-10-10 15:44:39,669 api_test.py[line:254]INFO - case id = 1
+req_url = https://kiplesme.com/sme/web/users/login
+ method = post
+ header = {}
+ param ={'email': 'xmyp1umd@linshiyouxiang.net', 'password': 'Test1234@'}
+2021-10-10 15:44:41,500 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:41,500 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:6b12f2c7c6a748b48efe36a67d25f7f7', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 5}, 'time': 1633851881860}
+2021-10-10 15:44:41,500 api_test.py[line:263]INFO - #####end to run case id: 1
+2021-10-10 15:44:41,500 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:41,500 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:41,500 api_test.py[line:144]INFO - assert_msg:{'is_pass': True, 'msg': 'module:Login,title:app login,assert_type:code,message:success'}
+2021-10-10 15:44:41,500 api_test.py[line:70]INFO - *****updateResultByCaseId
+2021-10-10 15:44:41,517 api_test.py[line:76]INFO - update `SME_testcases` set response="{'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:6b12f2c7c6a748b48efe36a67d25f7f7', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 5}, 'time': 1633851881860}", pass='Pass', msg='module:Login,title:app login,assert_type:code,message:success', update_time='2021-10-10 15:44:41' where id=1
+2021-10-10 15:44:41,522 api_test.py[line:149]INFO - 更新结果 rows=1
+2021-10-10 15:44:41,522 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:41,522 api_test.py[line:191]INFO - #####start to run case id: 2
+2021-10-10 15:44:41,522 api_test.py[line:224]INFO - 有前置条件
+2021-10-10 15:44:41,522 api_test.py[line:40]INFO - *****findCaseById
+2021-10-10 15:44:41,548 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:41,549 api_test.py[line:191]INFO - #####start to run case id: 1
+2021-10-10 15:44:41,549 api_test.py[line:254]INFO - case id = 1
+req_url = https://kiplesme.com/sme/web/users/login
+ method = post
+ header = {}
+ param ={'email': 'xmyp1umd@linshiyouxiang.net', 'password': 'Test1234@'}
+2021-10-10 15:44:41,887 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:41,887 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:5964fb2ae8814ca7a0393e55238b5134', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 6}, 'time': 1633851882246}
+2021-10-10 15:44:41,887 api_test.py[line:263]INFO - #####end to run case id: 1
+2021-10-10 15:44:41,887 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:41,888 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:41,888 api_test.py[line:234]INFO - 前置条件通过
+2021-10-10 15:44:41,888 api_test.py[line:243]INFO - {'field': 'token', 'scope': 'header'}
+2021-10-10 15:44:41,888 api_test.py[line:251]INFO - field_value:SME-TOKEN:5964fb2ae8814ca7a0393e55238b5134
+2021-10-10 15:44:41,888 api_test.py[line:254]INFO - case id = 2
+req_url = https://kiplesme.com/sme/web/users/profile/info
+ method = post
+ header = {'token': 'SME-TOKEN:5964fb2ae8814ca7a0393e55238b5134'}
+ param ={}
+2021-10-10 15:44:42,199 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:42,199 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851882558}
+2021-10-10 15:44:42,199 api_test.py[line:263]INFO - #####end to run case id: 2
+2021-10-10 15:44:42,199 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:42,199 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:42,199 api_test.py[line:144]INFO - assert_msg:{'is_pass': True, 'msg': 'module:UserInfo,title:user info,assert_type:code,message:success'}
+2021-10-10 15:44:42,199 api_test.py[line:70]INFO - *****updateResultByCaseId
+2021-10-10 15:44:42,201 api_test.py[line:76]INFO - update `SME_testcases` set response="{'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851882558}", pass='Pass', msg='module:UserInfo,title:user info,assert_type:code,message:success', update_time='2021-10-10 15:44:42' where id=2
+2021-10-10 15:44:42,204 api_test.py[line:149]INFO - 更新结果 rows=1
+2021-10-10 15:44:42,204 api_test.py[line:116]INFO - *****checkFailCase
+2021-10-10 15:44:42,229 api_test.py[line:177]INFO - ########rerun fail test cases#######
+2021-10-10 15:44:42,230 api_test.py[line:135]INFO - *****runCaseUpdateDB
+2021-10-10 15:44:42,230 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:42,230 api_test.py[line:191]INFO - #####start to run case id: 1
+2021-10-10 15:44:42,230 api_test.py[line:254]INFO - case id = 1
+req_url = https://kiplesme.com/sme/web/users/login
+ method = post
+ header = {}
+ param ={'email': 'xmyp1umd@linshiyouxiang.net', 'password': 'Test1234@'}
+2021-10-10 15:44:42,535 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:42,535 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:43b9b79730a542469158a32340bee86a', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 7}, 'time': 1633851882897}
+2021-10-10 15:44:42,535 api_test.py[line:263]INFO - #####end to run case id: 1
+2021-10-10 15:44:42,535 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:42,535 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:42,535 api_test.py[line:144]INFO - assert_msg:{'is_pass': True, 'msg': 'module:Login,title:app login,assert_type:code,message:success'}
+2021-10-10 15:44:42,535 api_test.py[line:70]INFO - *****updateResultByCaseId
+2021-10-10 15:44:42,558 api_test.py[line:76]INFO - update `SME_testcases` set response="{'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:43b9b79730a542469158a32340bee86a', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 7}, 'time': 1633851882897}", pass='Pass', msg='module:Login,title:app login,assert_type:code,message:success', update_time='2021-10-10 15:44:42' where id=1
+2021-10-10 15:44:42,563 api_test.py[line:149]INFO - 更新结果 rows=1
+2021-10-10 15:44:42,563 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:42,563 api_test.py[line:191]INFO - #####start to run case id: 2
+2021-10-10 15:44:42,563 api_test.py[line:224]INFO - 有前置条件
+2021-10-10 15:44:42,563 api_test.py[line:40]INFO - *****findCaseById
+2021-10-10 15:44:42,591 api_test.py[line:190]INFO - *****runCase
+2021-10-10 15:44:42,592 api_test.py[line:191]INFO - #####start to run case id: 1
+2021-10-10 15:44:42,592 api_test.py[line:254]INFO - case id = 1
+req_url = https://kiplesme.com/sme/web/users/login
+ method = post
+ header = {}
+ param ={'email': 'xmyp1umd@linshiyouxiang.net', 'password': 'Test1234@'}
+2021-10-10 15:44:42,923 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:42,923 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:202567b922964a789028bccc56576e20', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 8}, 'time': 1633851883285}
+2021-10-10 15:44:42,923 api_test.py[line:263]INFO - #####end to run case id: 1
+2021-10-10 15:44:42,923 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:42,923 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:42,924 api_test.py[line:234]INFO - 前置条件通过
+2021-10-10 15:44:42,924 api_test.py[line:243]INFO - {'field': 'token', 'scope': 'header'}
+2021-10-10 15:44:42,924 api_test.py[line:251]INFO - field_value:SME-TOKEN:202567b922964a789028bccc56576e20
+2021-10-10 15:44:42,924 api_test.py[line:254]INFO - case id = 2
+req_url = https://kiplesme.com/sme/web/users/profile/info
+ method = post
+ header = {'token': 'SME-TOKEN:202567b922964a789028bccc56576e20'}
+ param ={}
+2021-10-10 15:44:43,231 api_test.py[line:261]INFO - response = ↓
+2021-10-10 15:44:43,231 api_test.py[line:262]INFO - {'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851883588}
+2021-10-10 15:44:43,231 api_test.py[line:263]INFO - #####end to run case id: 2
+2021-10-10 15:44:43,231 api_test.py[line:273]INFO - *****assertResponse
+2021-10-10 15:44:43,231 api_test.py[line:285]INFO - 测试用例通过
+2021-10-10 15:44:43,231 api_test.py[line:144]INFO - assert_msg:{'is_pass': True, 'msg': 'module:UserInfo,title:user info,assert_type:code,message:success'}
+2021-10-10 15:44:43,231 api_test.py[line:70]INFO - *****updateResultByCaseId
+2021-10-10 15:44:43,233 api_test.py[line:76]INFO - update `SME_testcases` set response="{'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851883588}", pass='Pass', msg='module:UserInfo,title:user info,assert_type:code,message:success', update_time='2021-10-10 15:44:43' where id=2
+2021-10-10 15:44:43,236 api_test.py[line:149]INFO - 更新结果 rows=1
+2021-10-10 15:44:43,236 api_test.py[line:369]INFO - *****sendTestReport
+2021-10-10 15:44:43,274 api_test.py[line:318]INFO - *****loadHtmlPre
+2021-10-10 15:44:43,275 api_test.py[line:340]INFO - *****getResultData
+2021-10-10 15:44:43,275 api_test.py[line:26]INFO - *****loadAllCaseByProject
+2021-10-10 15:44:43,290 api_test.py[line:29]INFO - loadAllCaseByProject sql is:select * from `SME_testcases` where project='SME' and run='yes'
+2021-10-10 15:44:43,290 api_test.py[line:31]INFO - loadAllCaseByProject is:[{'id': 1, 'project': 'SME', 'module': 'Login', 'title': 'app login', 'method': 'post', 'url': '/users/login', 'run': 'yes', 'headers': '{}', 'pre_case_id': -1, 'pre_fields': '[]', 'request_body': '{\r\n    "email":"xmyp1umd@linshiyouxiang.net",\r\n    "password":"Test1234@"\r\n}', 'expect_result': '0', 'assert_type': 'code', 'pass': 'Pass', 'msg': 'module:Login,title:app login,assert_type:code,message:success', 'update_time': '2021-10-10 15:44:42', 'response': "{'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:43b9b79730a542469158a32340bee86a', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 7}, 'time': 1633851882897}", 'qa': 'Doris'}, {'id': 2, 'project': 'SME', 'module': 'UserInfo', 'title': 'user info', 'method': 'post', 'url': '/users/profile/info', 'run': 'yes', 'headers': '{"token":"$token$"}', 'pre_case_id': 1, 'pre_fields': '[{"field":"token","scope":"header"}]', 'request_body': '{}', 'expect_result': '0', 'assert_type': 'code', 'pass': 'Pass', 'msg': 'module:UserInfo,title:user info,assert_type:code,message:success', 'update_time': '2021-10-10 15:44:43', 'response': "{'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851883588}", 'qa': 'Doris'}]
+2021-10-10 15:44:43,290 api_test.py[line:99]INFO - *****caseRunSummary
+2021-10-10 15:44:43,307 api_test.py[line:26]INFO - *****loadAllCaseByProject
+2021-10-10 15:44:43,322 api_test.py[line:29]INFO - loadAllCaseByProject sql is:select * from `SME_testcases` where project='SME' and run='yes'
+2021-10-10 15:44:43,324 api_test.py[line:31]INFO - loadAllCaseByProject is:[{'id': 1, 'project': 'SME', 'module': 'Login', 'title': 'app login', 'method': 'post', 'url': '/users/login', 'run': 'yes', 'headers': '{}', 'pre_case_id': -1, 'pre_fields': '[]', 'request_body': '{\r\n    "email":"xmyp1umd@linshiyouxiang.net",\r\n    "password":"Test1234@"\r\n}', 'expect_result': '0', 'assert_type': 'code', 'pass': 'Pass', 'msg': 'module:Login,title:app login,assert_type:code,message:success', 'update_time': '2021-10-10 15:44:42', 'response': "{'code': 0, 'msg': 'success', 'data': {'token': 'SME-TOKEN:43b9b79730a542469158a32340bee86a', 'first_name': 'jakkkk', 'last_nme': 'fasasss', 'login_times': 7}, 'time': 1633851882897}", 'qa': 'Doris'}, {'id': 2, 'project': 'SME', 'module': 'UserInfo', 'title': 'user info', 'method': 'post', 'url': '/users/profile/info', 'run': 'yes', 'headers': '{"token":"$token$"}', 'pre_case_id': 1, 'pre_fields': '[{"field":"token","scope":"header"}]', 'request_body': '{}', 'expect_result': '0', 'assert_type': 'code', 'pass': 'Pass', 'msg': 'module:UserInfo,title:user info,assert_type:code,message:success', 'update_time': '2021-10-10 15:44:43', 'response': "{'code': 0, 'msg': 'success', 'data': {'personal': {'first_name': 'jakkkk', 'last_name': 'fasasss', 'mobile': '603423422333', 'email': 'xmyp1umd@linshiyouxiang.net'}, 'business': {'business_name': '', 'business_address_line1': '', 'state': '', 'postcode': '', 'ssm_number': ''}}, 'time': 1633851883588}", 'qa': 'Doris'}]
+2021-10-10 15:44:43,324 api_test.py[line:328]INFO - *****loadHtmlEnd
+2021-10-10 15:44:43,326 send_mail.py[line:16]INFO - title = SME API automation test report report = ../report/SME/test_report_2021-10-10_15_44_43.html mail_host = smtp.qq.com mail_sender = brsbyjw@qq.com mail_receivers = ['1226682240@qq.com'] mail_password = luesrdnzkwxrbdbh
+2021-10-10 15:44:44,484 send_mail.py[line:45]INFO - email was sent successfully!
+2021-10-10 15:44:44,530 api_test.py[line:181]INFO - ########complete to run API automation#######

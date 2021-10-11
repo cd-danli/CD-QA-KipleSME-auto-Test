@@ -1,0 +1,17 @@
+1. assert type有三种
+code : 直接匹配返回值和expect result是否一样
+data_content : 匹配返回的内容是否包含expect result
+data_len : 匹配返回的长度是否大于希望的长度
+
+2. header和body参数写法
+
+"client-id":"$config_client-id$"  会去config表里查找client-id对应的dict_vaule
+"merchant_reference":"$need_unique_num$"   会直接获取一个随机数
+"client-id":"$unique_name1_name2$"  会返回name1+随机数+name2的字符串， 如果name1和name2为0，替换相应的name为空字符串
+
+3. pre_case_id
+如果pre_case_id = -1表示没有前置依赖
+如果pre_case_id =  1 表示会运行case id =1的接口获取特定的数据
+
+4. pre_fileds
+[{"field":"token","scope":"header"}] 表示会替换header的token 前置依赖接口返回的token值

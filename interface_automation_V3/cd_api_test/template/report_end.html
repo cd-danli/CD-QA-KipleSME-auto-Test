@@ -1,0 +1,169 @@
+
+    function details(obj) {
+        if ($(obj).text() == 'expand') {
+            var len = $(obj).parent().parent().children().length;
+            var detailLog = "";
+            var logs = resultData["testResult"][parseInt($(obj).attr("buttonIndex"))]["log"];
+            $(obj).text("list contraction");
+            $(obj).removeClass("btn-primary");
+            $(obj).addClass("btn-danger");
+            $.each(logs, function (i, n) {
+                detailLog = detailLog + "<p>" + n + "</p>";
+            });
+            $(obj).parent().parent().after("<tr><td colspan='" + len + "'><div style='font-family: Consolas;font-size:12px'>" + detailLog + "</div></td></tr>");
+        } else if ($(obj).text() == 'list contraction') {
+            $(obj).parent().parent().next().remove();
+            $(obj).text("expand");
+            $(obj).removeClass("btn-danger");
+            $(obj).addClass("btn-primary");
+        }
+
+    }
+    $(function () {
+        $("#testName").text(resultData["testName"]);
+        $("#testPass").text(resultData["testPass"]);
+        $("#testFail").text(resultData["testFail"]);
+        $("#testSkip").text(resultData["testSkip"]);
+        $("#testAll").text(resultData["testAll"]);
+        $("#beginTime").text(resultData["beginTime"]);
+        $("#totalTime").text(resultData["totalTime"]);
+        var classNames = [];
+        var results = [];
+        $.each(resultData["testResult"], function (i, n) {
+            if(classNames.indexOf(n["module"])==-1){
+                classNames.push(n["module"]);
+            }
+            if(results.indexOf(n["status"])==-1){
+                results.push(n["status"]);
+            }
+        });
+
+        $.each(classNames, function (i, n) {
+            $("#filterClass").append("<option value='"+n+"' hassubinfo='true'>"+n+"</option>");
+        });
+        $.each(results, function (i, n) {
+            $("#filterResult").append("<option value='"+n+"' hassubinfo='true'>"+n+"</option>");
+        });
+
+        $("#filterClass").chosen({search_contains: true});
+        $("#filterResult").chosen({search_contains: true});
+
+        var errorFlag = false;
+
+        function generateResult(module, caseResult) {
+            $("#detailBody").children().remove();
+            var filterAll = 0;
+            var filterOk = 0;
+            var filterFail = 0;
+            var filterSkip = 0;
+            $.each(resultData["testResult"], function (i, n) {
+                if((module=="" || n["module"]==module) && (caseResult=="" || n["status"]==caseResult)){
+                    filterAll += 1;
+                    var status = "";
+                    if (n["status"] == 'PASS') {
+                        filterOk += 1;
+                        status = "<td><span class='text-success'>PASS</span></td>";
+                    } else if (n["status"] == 'FAIL') {
+                        filterFail += 1;
+                        status = "<td><span class='text-danger'>FAIL</span></td>";
+                    } else if (n["status"] == '错误') {
+                        filterFail += 1;
+                        errorFlag = true;
+                        status = "<td><span class='text-danger'>错误</span></td>";
+                    } else if (n["status"] == 'SKIP') {
+                        filterSkip += 1;
+                        status = "<td><span class='text-warning'>SKIP</span></td>";
+                    } else {
+                        status = "<td><span>" + n["status"] + "</span></td>";
+                    }
+                    var tr = "<tr style='font-family: Consolas'>" +
+                        "<td>" + (i + 1) + "</td>" +
+                        "<td>" + n["module"] + "</td>" +
+                        "<td>" + n["apiname"] + "</td>" +
+                        "<td>"+n["description"] + "</td>" +
+                        "<td>" + n["QA"] + "</td>" +
+                        status + "<td><button type='button' onclick='details(this)' buttonIndex='" + i + "' class='btn btn-primary btn-xs' style='margin-bottom: 0px'>expand</button></td></tr>"
+                    $("#detailBody").append(tr);
+                }
+            });
+            $("#filterAll").text(filterAll);
+            $("#filterOk").text(filterOk);
+            $("#filterFail").text(filterFail);
+            $("#filterSkip").text(filterSkip);
+        }
+
+        generateResult("", "");
+        $("#alert-tips").hide();
+        if (errorFlag) {
+            $("#alert-tips").show();
+        }
+
+        $("#filterClass").on('change', function () {
+            var module = $("#filterClass").val();
+            var caseResult = $("#filterResult").val();
+            generateResult(module, caseResult);
+        });
+
+        $("#filterResult").on('change', function () {
+            var module = $("#filterClass").val();
+            var caseResult = $("#filterResult").val();
+            generateResult(module, caseResult);
+        });
+
+        //$(".chosen-select").trigger("chosen:updated");
+
+        function pie() {
+            var option = {
+                title: {
+                    text: 'Test Results',
+                    subtext: '',
+                    x: 'center',
+                    textStyle: {
+                        "color": "#555"
+                    }
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    y: 'center',
+                    x: 'right',
+                    data: ['FAIL', 'SKIP', 'PASS']
+                },
+                series: [
+                    {
+                        name: 'run test result ',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['50%', '60%'],
+                        data: [
+                            {value: resultData["testFail"], name: 'FAIL'},
+                            {value: resultData["testSkip"], name: 'SKIP'},
+                            {value: resultData["testPass"], name: 'PASS'}
+                        ],
+                        color: [
+                            "#F25929",
+                            "#777777",
+                            "#70AD47"
+                        ],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            var chart = echarts.init(document.getElementById("echarts-map-chart"));
+            chart.setOption(option);
+        }
+        pie();
+    });
+
+</script>
+</body>
+</html>

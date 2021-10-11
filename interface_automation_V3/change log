@@ -1,0 +1,8 @@
+1. 调整了test report，使其更美观.
+   报告会统计case 允许时间
+   成功用例数
+   失败用例数
+   跳过用例数
+   API 接口返回
+   chart图标展示
+2. 所有test report,会存在report目录
